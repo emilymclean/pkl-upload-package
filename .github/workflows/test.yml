@@ -31,6 +31,8 @@ jobs:
           echo "SemVer: ${{ steps.gitversion.outputs.semVer }}"
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     needs:
       - version
     steps:
