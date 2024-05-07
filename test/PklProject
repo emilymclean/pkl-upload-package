@@ -6,5 +6,5 @@ package {
   name = "pkl-upload-package"
   baseUri = "package://benm.cl/\(name)" 
   version = read("file:.version").text.trim()
-  packageZipUrl = "https://benm.cl/\(name)/v\(version)/\(name)@\(version).zip"
+  packageZipUrl = "https://benm.cl/\(name)/\(name)@\(version).zip"
 }

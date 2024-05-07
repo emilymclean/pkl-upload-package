@@ -25,6 +25,10 @@ inputs:
     description: "The commit message of the push to github pages"
     required: false
     default: "Upload updated version of pkl project"
+  duplicate-version-directory:
+    description: "Setting to true will duplicate the version directory, aka package@version/package@version.zip vs /package@version.zip"
+    required: false
+    default: "false"
 runs:
   using: 'composite'
   steps:
@@ -49,7 +53,13 @@ runs:
       shell: bash
       run: |
         mkdir -p ./pages/${{ inputs.output-directory }}
-        mv .out/* ./pages/${{ inputs.output-directory }}/
+
+        if [[ "${{ inputs.duplicate-version-directory }}" == "false" ]]
+        then
+          mv .out/*/* ./pages/${{ inputs.output-directory }}/
+        else
+          mv .out/* ./pages/${{ inputs.output-directory }}/
+        fi
     - uses: stefanzweifel/git-auto-commit-action@v5
       with:
         repository: ./pages
