@@ -48,7 +48,7 @@ runs:
         pkl-version: ${{ inputs.pkl-version }}
     - name: Package Pkl
       shell: bash
-      run: pkl project package ./source/${{ inputs.input-directory }}
+      run: pkl project package --skip-publish-check ./source/${{ inputs.input-directory }}
     - name: Move project files to pages
       shell: bash
       run: |
