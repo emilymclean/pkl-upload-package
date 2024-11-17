@@ -20,7 +20,7 @@ inputs:
   pkl-version:
     description: 'The version of pkl to use'
     required: false
-    default: "0.25.3"
+    default: "0.27.0"
   commit-message:
     description: "The commit message of the push to github pages"
     required: false
@@ -33,12 +33,12 @@ runs:
   using: 'composite'
   steps:
     - name: Checkout source branch
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         path: 'source'
         ref: ${{ inputs.input-branch != null && inputs.input-branch || github.ref }}
     - name: Checkout pages branch
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       with:
         path: 'pages'
         ref: ${{ inputs.output-branch }}
