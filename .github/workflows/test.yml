@@ -12,19 +12,18 @@ jobs:
       version: ${{ steps.gitversion.outputs.semVer }}
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: '0'
       - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v0.9.6
+        uses: gittools/actions/gitversion/setup@v3.0.0
         with:
           versionSpec: '5.x'
       - name: Use GitVersion
         id: gitversion # step id used as reference for output values
-        uses: gittools/actions/gitversion/execute@v0.9.6
+        uses: gittools/actions/gitversion/execute@v3.0.0
         with:
           useConfigFile: true
-          showConfig: true
           configFilePath: ./gitversion.yml
       - name: Display SemVer
         run: |
@@ -37,7 +36,7 @@ jobs:
       - version
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - uses: DamianReeves/write-file-action@master
         with:
           path: .version
